@@ -66,11 +66,11 @@ const HeroSection = () => {
             <ScrollAnimation direction="up" delay={0.8}>
               <div className="flex justify-center lg:justify-start gap-4 md:gap-6 pt-4 md:pt-6">
                 <div className="text-center">
-                  <div className="text-xl md:text-2xl font-bold text-gray-900">2+</div>
+                  <div className="text-xl md:text-2xl font-bold text-gray-900">1+</div>
                   <div className="text-xs md:text-sm text-gray-600">Years Experience</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-xl md:text-2xl font-bold text-gray-900">10+</div>
+                  <div className="text-xl md:text-2xl font-bold text-gray-900">20+</div>
                   <div className="text-xs md:text-sm text-gray-600">Projects</div>
                 </div>
                 <div className="text-center">
