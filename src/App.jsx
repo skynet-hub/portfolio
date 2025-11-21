@@ -15,21 +15,28 @@ function App() {
         <section className="min-h-screen py-20">
           <div className="max-w-6xl mx-auto px-4">
             <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">About Me</h2>
-            {/* Your about content here */}
+            {/*  about content here */}
+          </div>
+        </section>
+
+        <section className="min-h-screen py-20">
+          <div className="max-w-6xl mx-auto px-4">
+            <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">Tech Stack</h2>
+            {/* about content here */}
           </div>
         </section>
 
         <section className="min-h-screen py-20">
           <div className="max-w-6xl mx-auto px-4">
             <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">My Projects</h2>
-            {/* Your projects content here */}
+            {/* projects content here */}
           </div>
         </section>
 
         <section className="min-h-screen py-20">
           <div className="max-w-6xl mx-auto px-4">
             <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">Get In Touch</h2>
-            {/* Your contact content here */}
+            {/* Tech Stack content here */}
           </div>
         </section>
       </main>

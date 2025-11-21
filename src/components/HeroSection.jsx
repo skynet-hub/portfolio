@@ -40,7 +40,8 @@ const HeroSection = () => {
             <ScrollAnimation direction="up" delay={0.6}>
               <div className="mt-6 md:mt-4">
                 <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start">
-                  <motion.button 
+                  <motion.a
+                    href='https://github.com/skynet-hub' 
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="px-6 py-3 md:px-8 md:py-4 bg-indigo-600 text-white font-bold rounded-xl 
@@ -48,7 +49,7 @@ const HeroSection = () => {
                              duration-300 border-2 border-indigo-600 text-sm md:text-base"
                   >
                     View My Work
-                  </motion.button>
+                  </motion.a>
                   <motion.button 
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
