@@ -8,7 +8,7 @@ function NavBar() {
     setIsMenuOpen(!isMenuOpen);
   };
   return (
-      <nav className="bg-neutral-primary fixed w-full z-50 top-0 start-0 border-b border-default">
+      <nav className="bg-neutral-primary md:fixed w-full z-50 top-0 start-0 border-b border-default">
         <div className="max-w-7xl flex flex-wrap items-center justify-between mx-auto p-4">
           <a
             href="/"
@@ -45,13 +45,13 @@ function NavBar() {
             </svg>
           </button>
           <div
-            className={`w-full md:block md:w-auto ${isMenuOpen ? 'block absolute top-full left-0 bg-neutral-primary border-b border-default shadow-lg' : 'hidden'}`}
-            id="navbar-default"
+             className={`w-full md:block md:w-auto ${isMenuOpen ? 'block bg-neutral-primary border-b border-default shadow-lg' : 'hidden'}`}
+             id="navbar-default"
           >
             <ul className="font-medium flex flex-col p-4 md:p-0 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-transparent">
               <li>
                 <a
-                  href="#"
+                  href="#about"
                   className="block py-2 px-4 text-heading rounded-md hover:bg-neutral-tertiary
                   md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 
                   transition duration-300 hover:underline
@@ -62,7 +62,7 @@ function NavBar() {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#tech-stack"
                   className="block py-2 px-4 text-heading rounded-md hover:bg-neutral-tertiary
                   md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0
                   transition duration-300 hover:underline
@@ -73,7 +73,7 @@ function NavBar() {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#projects"
                   className="block py-2 px-4 text-heading rounded-md hover:bg-neutral-tertiary
                   md:hover:bg-transparent md:border-0 md:hover:text-fg-brand
                   md:p-0 transition duration-300 hover:underline hover:decoration-2
@@ -83,7 +83,7 @@ function NavBar() {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="#contact"
                   className="block py-2 px-4 text-heading rounded-md hover:bg-neutral-tertiary 
                   md:hover:bg-transparent md:border-0 md:hover:text-fg-brand 
                   md:p-0 transition duration-300

@@ -1,0 +1,137 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import ScrollAnimation from './ScrollAnimation';
+
+const ProjectsSection = () => {
+  const projects = [
+    {
+      id: 1,
+      title: "E-Commerce Platform",
+      description: "A full-stack e-commerce solution with React, Node.js, and MongoDB.",
+      technologies: ["React", "Node.js", "MongoDB", "Express"],
+      githubUrl: "https://github.com/skynet-hub/ecommerce-platform",
+      liveUrl: "https://yourapp.com"
+    },
+    {
+      id: 2,
+      title: "Task Management App",
+      description: "A collaborative task management application with real-time updates.",
+      technologies: ["React", "Firebase", "Tailwind CSS"],
+      githubUrl: "https://github.com/skynet-hub/task-manager",
+      liveUrl: "https://yourapp.com"
+    },
+    {
+      id: 3,
+      title: "Weather Dashboard",
+      description: "A responsive weather application with location-based forecasts.",
+      technologies: ["JavaScript", "API Integration", "CSS3"],
+      githubUrl: "https://github.com/skynet-hub/weather-dashboard",
+      liveUrl: "https://yourapp.com"
+    },
+    {
+      id: 4,
+      title: "Portfolio Website",
+      description: "A modern, responsive portfolio website with smooth animations.",
+      technologies: ["React", "Tailwind CSS", "Framer Motion"],
+      githubUrl: "https://github.com/skynet-hub/portfolio",
+      liveUrl: "https://yourportfolio.com"
+    }
+  ];
+
+  return (
+    <section id="projects" className="w-full px-4 md:px-8 py-12 md:py-20">
+      <div className="max-w-6xl mx-auto">
+        
+        <ScrollAnimation direction="up">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              My <span className="text-indigo-600">Projects</span>
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Here are some of my recent projects that showcase my skills and experience.
+            </p>
+          </div>
+        </ScrollAnimation>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {projects.map((project, index) => (
+            <ScrollAnimation key={project.id} direction="up" delay={0.2 * index}>
+              <motion.div
+                className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
+                whileHover={{ y: -5 }}
+              >
+                {/* Project Image Placeholder with Scale Effect */}
+                <div className="relative overflow-hidden">
+                  <motion.div 
+                    className="w-full h-48 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="text-center">
+                      <div className="text-3xl mb-2">📱</div>
+                      <p className="text-sm font-medium">{project.title}</p>
+                    </div>
+                  </motion.div>
+                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300" />
+                </div>
+
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">{project.title}</h3>
+                  <p className="text-gray-600 mb-4">{project.description}</p>
+                  
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {project.technologies.map((tech, techIndex) => (
+                      <span key={techIndex} className="px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full text-xs font-medium">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="flex gap-3">
+                    <motion.a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 px-4 py-2 bg-gray-900 text-white text-center rounded-lg font-medium hover:bg-gray-800 transition-colors"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      View Code
+                    </motion.a>
+                    <motion.a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 px-4 py-2 bg-indigo-600 text-white text-center rounded-lg font-medium hover:bg-indigo-700 transition-colors"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      Live Demo
+                    </motion.a>
+                  </div>
+                </div>
+              </motion.div>
+            </ScrollAnimation>
+          ))}
+        </div>
+
+        <ScrollAnimation direction="up" delay={0.6}>
+          <div className="text-center mt-12">
+            <motion.a
+              href="https://github.com/skynet-hub"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 border-2 border-indigo-600 text-indigo-600 font-medium rounded-lg hover:bg-indigo-50 transition-colors"
+              whileHover={{ scale: 1.05 }}
+            >
+              View More on GitHub
+            </motion.a>
+          </div>
+        </ScrollAnimation>
+
+      </div>
+    </section>
+  );
+};
+
+export default ProjectsSection;

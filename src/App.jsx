@@ -1,5 +1,9 @@
-import React, { useState } from "react";
 import HeroSection from "./components/HeroSection";
+import Contact from "./components/Contact";
+import AboutMe from "./components/AboutMe";
+import TechStack from "./components/TechStack"; 
+import Projects from "./components/Projects";
+import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
 
 function App() {
@@ -8,37 +12,32 @@ function App() {
       {/*NavBar Section */}
       <NavBar />
       {/* Main content with animations */}
-      <main className="min-h-screen">
+      <main>
         <HeroSection />
         
-        {/* Other sections with scroll animations */}
-        <section className="min-h-screen py-20">
-          <div className="max-w-6xl mx-auto px-4">
-            <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">About Me</h2>
-            {/*  about content here */}
-          </div>
+        {/* About Section - only takes needed space */}
+        <section id="about">
+          <AboutMe />
         </section>
 
-        <section className="min-h-screen py-20">
-          <div className="max-w-6xl mx-auto px-4">
-            <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">Tech Stack</h2>
-            {/* about content here */}
-          </div>
+        {/* Tech Stack Section - only takes needed space */}
+        <section id="tech-stack">
+          <TechStack />
         </section>
 
-        <section className="min-h-screen py-20">
-          <div className="max-w-6xl mx-auto px-4">
-            <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">My Projects</h2>
-            {/* projects content here */}
-          </div>
+        {/* Projects Section - only takes needed space */}
+        <section id="projects">
+          <Projects />
         </section>
 
-        <section className="min-h-screen py-20">
-          <div className="max-w-6xl mx-auto px-4">
-            <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">Get In Touch</h2>
-            {/* Tech Stack content here */}
-          </div>
+        {/* Contact Section - only takes needed space */}
+        <section id="contact">
+          <Contact />
         </section>
+
+        <section>
+          <Footer />
+        </section>  
       </main>
     </div>
   );

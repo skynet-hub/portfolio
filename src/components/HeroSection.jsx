@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import TypingAnimation from './TypingAnimation';
 import ProfileImage from '../assets/dave.jpg';
@@ -6,9 +5,8 @@ import ScrollAnimation from './ScrollAnimation';
 
 const HeroSection = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 md:px-8 pt-24 md:pt-16">
+   <div className="min-h-screen flex items-center justify-center px-4 md:px-8 md:pt-16">
       <div className="max-w-6xl mx-auto w-full">
-        
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8 md:gap-12">
           
           {/* Left side - Text content with animations */}
@@ -50,7 +48,9 @@ const HeroSection = () => {
                   >
                     View My Work
                   </motion.a>
-                  <motion.button 
+                  <motion.a
+                    href='/Magobo_Lesaomako.pdf'
+                    download="Magobo_Lesaomako_resume.pdf"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="px-6 py-3 md:px-8 md:py-4 bg-transparent text-indigo-600 font-bold rounded-xl 
@@ -58,25 +58,7 @@ const HeroSection = () => {
                              border-indigo-600 hover:bg-indigo-50 text-sm md:text-base"
                   >
                     Download CV
-                  </motion.button>
-                </div>
-              </div>
-            </ScrollAnimation>
-
-            {/* Social links or stats with animation */}
-            <ScrollAnimation direction="up" delay={0.8}>
-              <div className="flex justify-center lg:justify-start gap-4 md:gap-6 pt-4 md:pt-6">
-                <div className="text-center">
-                  <div className="text-xl md:text-2xl font-bold text-gray-900">1+</div>
-                  <div className="text-xs md:text-sm text-gray-600">Years Experience</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-xl md:text-2xl font-bold text-gray-900">20+</div>
-                  <div className="text-xs md:text-sm text-gray-600">Projects</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-xl md:text-2xl font-bold text-gray-900">5+</div>
-                  <div className="text-xs md:text-sm text-gray-600">Technologies</div>
+                  </motion.a>
                 </div>
               </div>
             </ScrollAnimation>
