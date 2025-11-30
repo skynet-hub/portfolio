@@ -8,7 +8,7 @@ function NavBar() {
     setIsMenuOpen(!isMenuOpen);
   };
   return (
-      <nav className="bg-neutral-primary md:fixed w-full z-50 top-0 start-0 border-b border-default">
+      <nav className="bg-gray-100 md:fixed w-full z-50 top-0 start-0 border-b border-default">
         <div className="max-w-7xl flex flex-wrap items-center justify-between mx-auto p-4">
           <a
             href="/"

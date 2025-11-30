@@ -5,6 +5,7 @@ import TechStack from "./components/TechStack";
 import Projects from "./components/Projects";
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
           <Footer />
         </section>  
       </main>
+      <ToastContainer />
     </div>
   );
 }

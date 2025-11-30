@@ -1,8 +1,62 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 import { motion } from 'framer-motion';
 import ScrollAnimation from './ScrollAnimation';
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    // Basic validation
+    if (!formData.name || !formData.email || !formData.message) {
+      toast.error('Please fill in all fields');
+      return;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      toast.error('Please enter a valid email address');
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // Simulate form submission (replace with actual API call)
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // Success message
+      toast.success('Message sent successfully! 🎉');
+      
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        message: ''
+      });
+      
+    } catch (error) {
+      toast.error('Failed to send message. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contact" className="w-full px-4 md:px-8 py-12 md:py-20">
       <div className="max-w-4xl mx-auto">
@@ -37,7 +91,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="text-gray-600 text-sm">Email</p>
-                    <p className="text-gray-900 font-medium">your.email@example.com</p>
+                    <p className="text-gray-900 font-medium">davidlesaomako@gmail.com</p>
                   </div>
                 </div>
 
@@ -49,7 +103,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="text-gray-600 text-sm">Phone</p>
-                    <p className="text-gray-900 font-medium">+27 12 345 6789</p>
+                    <p className="text-gray-900 font-medium">+27 71 366 1842</p>
                   </div>
                 </div>
 
@@ -95,7 +149,7 @@ const Contact = () => {
           {/* Contact Form */}
           <ScrollAnimation direction="right" delay={0.3}>
             <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8">
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                     Your Name
@@ -103,6 +157,8 @@ const Contact = () => {
                   <input
                     type="text"
                     id="name"
+                    value={formData.name}
+                    onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
                     placeholder="Enter your name"
                   />
@@ -115,6 +171,8 @@ const Contact = () => {
                   <input
                     type="email"
                     id="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
                     placeholder="Enter your email"
                   />
@@ -127,6 +185,8 @@ const Contact = () => {
                   <textarea
                     id="message"
                     rows="4"
+                    value={formData.message}
+                    onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
                     placeholder="Tell me about your project..."
                   ></textarea>
@@ -134,11 +194,12 @@ const Contact = () => {
 
                 <motion.button
                   type="submit"
-                  className="w-full bg-indigo-600 text-white py-3 px-6 rounded-lg font-bold hover:bg-indigo-700 transition-colors shadow-lg hover:shadow-xl"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                  disabled={isSubmitting}
+                  className="w-full bg-indigo-600 text-white py-3 px-6 rounded-lg font-bold hover:bg-indigo-700 disabled:bg-indigo-400 disabled:cursor-not-allowed transition-colors shadow-lg hover:shadow-xl"
+                  whileHover={!isSubmitting ? { scale: 1.02 } : {}}
+                  whileTap={!isSubmitting ? { scale: 0.98 } : {}}
                 >
-                  Send Message
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </motion.button>
               </form>
             </div>

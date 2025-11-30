@@ -1,6 +1,10 @@
 import React from 'react';
+import productStoreImage from "../assets/Screenshot from 2025-11-30 12-11-24.png"
+import chatappImage from "../assets/Screenshot from 2025-11-30 12-19-14.png"
+import EcormmerceImage from "../assets/Screenshot from 2025-11-30 12-23-28.png"
 import { motion } from 'framer-motion';
 import ScrollAnimation from './ScrollAnimation';
+import { image } from 'framer-motion/client';
 
 const ProjectsSection = () => {
   const projects = [
@@ -10,31 +14,26 @@ const ProjectsSection = () => {
       description: "A full-stack e-commerce solution with React, Node.js, and MongoDB.",
       technologies: ["React", "Node.js", "MongoDB", "Express"],
       githubUrl: "https://github.com/skynet-hub/ecommerce-platform",
-      liveUrl: "https://yourapp.com"
+      liveUrl: "https://yourapp.com",
+      image: EcormmerceImage
     },
     {
       id: 2,
-      title: "Task Management App",
-      description: "A collaborative task management application with real-time updates.",
-      technologies: ["React", "Firebase", "Tailwind CSS"],
-      githubUrl: "https://github.com/skynet-hub/task-manager",
-      liveUrl: "https://yourapp.com"
+      title: "Basic Product Store",
+      description: "A full-stack product store built with React, Nodejs, and MongoDB",
+      technologies: ["React", "Node.js", "MongoDB", "Express"],
+      githubUrl: "https://github.com/skynet-hub/Basic-Product-Store",
+      liveUrl: "https://basic-product-store-bc4k.onrender.com/",
+      image: productStoreImage
     },
     {
       id: 3,
-      title: "Weather Dashboard",
-      description: "A responsive weather application with location-based forecasts.",
-      technologies: ["JavaScript", "API Integration", "CSS3"],
-      githubUrl: "https://github.com/skynet-hub/weather-dashboard",
-      liveUrl: "https://yourapp.com"
-    },
-    {
-      id: 4,
-      title: "Portfolio Website",
-      description: "A modern, responsive portfolio website with smooth animations.",
-      technologies: ["React", "Tailwind CSS", "Framer Motion"],
-      githubUrl: "https://github.com/skynet-hub/portfolio",
-      liveUrl: "https://yourportfolio.com"
+      title: "basic chat-application",
+      description: "A full-stack chat application built with React, Nodejs, and MongoDB and socket.io", 
+      technologies: ["React", "Node.js", "MongoDB", "Express"],
+      githubUrl: "https://github.com/skynet-hub/chat-app",
+      liveUrl: "https://chat-app.com",
+      image: chatappImage
     }
   ];
 
@@ -63,16 +62,16 @@ const ProjectsSection = () => {
                 {/* Project Image Placeholder with Scale Effect */}
                 <div className="relative overflow-hidden">
                   <motion.div 
-                    className="w-full h-48 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white"
+                    className="w-full h-48 bg-linear-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white"
                     whileHover={{ scale: 1.1 }}
                     transition={{ duration: 0.3 }}
                   >
                     <div className="text-center">
-                      <div className="text-3xl mb-2">📱</div>
-                      <p className="text-sm font-medium">{project.title}</p>
+                       <img src={project.image} alt="Image of productStore"/>
                     </div>
                   </motion.div>
-                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300" />
+                  {/* <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300" />
+                   */}
                 </div>
 
                 <div className="p-6">
