@@ -32,7 +32,7 @@ const ProjectsSection = () => {
       description: "A full-stack chat application built with React, Nodejs, and MongoDB and socket.io", 
       technologies: ["React", "Node.js", "MongoDB", "Express"],
       githubUrl: "https://github.com/skynet-hub/chat-app",
-      liveUrl: "https://chat-app.com",
+      liveUrl: "https://chat-app-ydjp.onrender.com",
       image: chatappImage
     }
   ];
