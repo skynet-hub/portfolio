@@ -1,26 +1,55 @@
 import { useState, useRef, useEffect } from 'react';
+
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, X, Send } from 'lucide-react';
-import { GoogleGenerativeAI } from '@google/generative-ai';
+const FAQ = [
+  {
+    keywords: ['who', 'magobo', 'about', 'yourself', 'introduce'],
+    answer: "Magobo Lesaomako is a finance graduate turned software engineer. He studied BAccSci at Wits (2017–2020) and completed the WeThinkCode_ Software Engineering Programme (2024–2025). He combines business acumen with technical depth.",
+  },
+  {
+    keywords: ['skill', 'tech', 'stack', 'language', 'know', 'use'],
+    answer: "Magobo's skills span full-stack development, systems programming (Rust, C++), DevOps, and cloud infrastructure. He's also into game development and has 20+ self-built projects.",
+  },
+  {
+    keywords: ['project', 'built', 'work', 'portfolio', 'made'],
+    answer: "Magobo has built 20+ projects covering web apps, systems tools, DevOps pipelines, and game dev experiments. Check out the Projects section on this page for details!",
+  },
+  {
+    keywords: ['education', 'study', 'degree', 'university', 'school', 'wits', 'wethincode'],
+    answer: "He holds a BAccSci from the University of the Witwatersrand (2017–2020), briefly studied BSc Actuarial Science at UP (2016), and completed the WeThinkCode_ Software Engineering Programme (2024–2025).",
+  },
+  {
+    keywords: ['github', 'code', 'repo', 'repository'],
+    answer: "You can find Magobo's code on GitHub at https://github.com/skynet-hub 🚀",
+  },
+  {
+    keywords: ['cv', 'resume', 'download', 'hire', 'available'],
+    answer: "Yes! Magobo's CV is available for download right here on the portfolio. Scroll up and look for the download button 📄",
+  },
+  {
+    keywords: ['contact', 'email', 'reach', 'message'],
+    answer: "You can reach Magobo via the Contact section at the bottom of this page. He'd love to hear from you!",
+  },
+  {
+    keywords: ['philosophy', 'mindset', 'approach', 'goal'],
+    answer: '"Finance meets code — building things that are both technically sound and business-smart." Magobo brings an analytical, business-aware perspective to every technical problem.',
+  },
+  {
+    keywords: ['devops', 'cloud', 'infrastructure', 'aws', 'docker'],
+    answer: "Magobo has hands-on experience with DevOps practices and cloud infrastructure — think CI/CD pipelines, containerisation, and cloud deployments.",
+  },
+  {
+    keywords: ['game', 'gaming', 'gamedev', 'unity', 'unreal'],
+    answer: "Game development is one of Magobo's passions! He explores game dev as part of his self-taught journey alongside systems programming.",
+  },
+];
 
-const SYSTEM_PROMPT = `You are a helpful assistant on Magobo Lesaomako's portfolio website. Answer questions about Magobo only. Be concise and friendly.
-
-About Magobo:
-- Full name: Magobo Lesaomako
-- Finance graduate (BAccSci, University of the Witwatersrand 2017–2020) turned software engineer
-- Also briefly studied BSc Actuarial Science at University of Pretoria (2016)
-- Completed WeThinkCode_ Software Engineering Programme (2024–2025)
-- Self-taught: 20+ projects, DevOps, Game Dev
-- Skills: Full-stack development, systems programming (Rust, C++), DevOps, cloud infrastructure
-- Interests: game development, systems programming, cloud/DevOps
-- GitHub: https://github.com/skynet-hub
-- Has a CV available for download on the portfolio
-- Philosophy: "Finance meets code — building things that are both technically sound and business-smart."
-- Traits: Analytical mindset, rapid learner, combines business + tech knowledge
-
-If asked anything unrelated to Magobo, politely redirect the conversation back to questions about him.`;
-
-const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
+function getReply(input) {
+  const lower = input.toLowerCase();
+  const match = FAQ.find(({ keywords }) => keywords.some(k => lower.includes(k)));
+  return match?.answer ?? "I can only answer questions about Magobo 😊 Try asking about his skills, projects, education, or how to contact him!";
+}
 
 export default function ChatBot() {
   const [open, setOpen] = useState(false);
@@ -30,38 +59,21 @@ export default function ChatBot() {
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const bottomRef = useRef(null);
-  const chatRef = useRef(null);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  // initialise chat session once
-  useEffect(() => {
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
-    chatRef.current = model.startChat({
-      history: [
-        { role: 'user', parts: [{ text: SYSTEM_PROMPT }] },
-        { role: 'model', parts: [{ text: 'Understood. I will only answer questions about Magobo Lesaomako.' }] },
-      ],
-    });
-  }, []);
-
-  const send = async () => {
+  const send = () => {
     const text = input.trim();
     if (!text || loading) return;
     setInput('');
     setMessages(prev => [...prev, { role: 'user', text }]);
     setLoading(true);
-    try {
-      const result = await chatRef.current.sendMessage(text);
-      const reply = result.response.text();
-      setMessages(prev => [...prev, { role: 'bot', text: reply }]);
-    } catch {
-      setMessages(prev => [...prev, { role: 'bot', text: 'Sorry, something went wrong. Try again.' }]);
-    } finally {
+    setTimeout(() => {
+      setMessages(prev => [...prev, { role: 'bot', text: getReply(text) }]);
       setLoading(false);
-    }
+    }, 500);
   };
 
   return (
