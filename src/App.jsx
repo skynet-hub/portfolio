@@ -6,6 +6,7 @@ import Projects from "./components/Projects";
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
 import CursorSpotlight from "./components/CursorSpotlight";
+import ChatBot from "./components/ChatBot";
 import { ToastContainer } from "react-toastify";
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
 
         <section><Footer /></section>
       </main>
+      <ChatBot />
       <ToastContainer />
     </div>
   );
