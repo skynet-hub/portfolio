@@ -40,13 +40,13 @@ const timeline = [
     active: false,
   },
   {
-    year: '2021',
+    year: '2017 – 2020',
     title: 'BAccSci',
     place: 'University of the Witwatersrand',
     active: false,
   },
   {
-    year: '2024',
+    year: '2024 – 2025',
     title: 'WeThinkCode_',
     place: 'Software Engineering Programme',
     active: false,
