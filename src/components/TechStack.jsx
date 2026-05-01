@@ -161,7 +161,7 @@ const TechStack = () => {
             <h3 className="text-center text-lg font-semibold text-gray-400 mb-6">🚀 Currently Exploring</h3>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {[
-                { label: "Game Development", sub: "React + Unreal Engine / C++", color: "from-orange-500/20 to-red-500/20", border: "border-orange-500/30", text: "text-orange-300" },
+                { label: "Game Development", sub: "Unity & Unreal Engine / C++", color: "from-orange-500/20 to-red-500/20", border: "border-orange-500/30", text: "text-orange-300" },
                 { label: "Systems Programming", sub: "Rust & low-level C++", color: "from-yellow-500/20 to-orange-500/20", border: "border-yellow-500/30", text: "text-yellow-300" },
                 { label: "DevOps Engineering", sub: "CI/CD, Docker, Cloud infra", color: "from-cyan-500/20 to-blue-500/20", border: "border-cyan-500/30", text: "text-cyan-300" },
               ].map((item, i) => (
