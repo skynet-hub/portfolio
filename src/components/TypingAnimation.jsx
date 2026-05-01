@@ -1,46 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 const TypingAnimation = () => {
   const [displayText, setDisplayText] = useState('');
   const [lineIndex, setLineIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
-  
+
   const texts = [
-    "Software Engineering Student",
-    "Aspiring Full Stack Engineer", 
-    "Aspiring DevOps Engineer",
-    "Always Learning New Things"
+    "Full Stack Engineer",
+    "DevOps Enthusiast",
+    "Systems Programmer",
+    "Game Dev Explorer",
   ];
 
   useEffect(() => {
     const currentText = texts[lineIndex];
-    
     if (charIndex <= currentText.length) {
-      const timeout = setTimeout(() => {
+      const t = setTimeout(() => {
         setDisplayText(currentText.substring(0, charIndex));
-        setCharIndex(prev => prev + 1);
-      }, 100);
-
-      return () => clearTimeout(timeout);
+        setCharIndex(c => c + 1);
+      }, 80);
+      return () => clearTimeout(t);
     } else {
-      const timeout = setTimeout(() => {
-        setLineIndex(prev => (prev + 1) % texts.length);
+      const t = setTimeout(() => {
+        setLineIndex(l => (l + 1) % texts.length);
         setCharIndex(0);
-        setDisplayText('');
-      }, 2000);
-
-      return () => clearTimeout(timeout);
+      }, 2200);
+      return () => clearTimeout(t);
     }
-  }, [charIndex, lineIndex, texts]);
+  }, [charIndex, lineIndex]);
 
   return (
-    <div className="font-semibold w-full">
-      <div className="text-center lg:text-left leading-tight w-full">
-        <span className="text-2xl md:text-3xl lg:text-4xl bg-linear-to-r from-gray-700 to-indigo-600 bg-clip-text text-transparent">
-          {displayText}
-          <span className="animate-pulse ml-1 text-indigo-600">|</span>
-        </span>
-      </div>
+    <div className="flex items-center gap-1 justify-center lg:justify-start">
+      <span className="text-xl md:text-2xl font-semibold text-gray-300">
+        {displayText}
+      </span>
+      <span className="inline-block w-0.5 h-6 md:h-7 bg-indigo-400 animate-pulse rounded-full" />
     </div>
   );
 };

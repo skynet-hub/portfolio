@@ -4,198 +4,157 @@ import { motion } from 'framer-motion';
 import ScrollAnimation from './ScrollAnimation';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.id]: e.target.value
-    });
-  };
+  const handleChange = (e) => setFormData({ ...formData, [e.target.id]: e.target.value });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    // Basic validation
     if (!formData.name || !formData.email || !formData.message) {
       toast.error('Please fill in all fields');
       return;
     }
-
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       toast.error('Please enter a valid email address');
       return;
     }
-
     setIsSubmitting(true);
-
     try {
-      // Simulate form submission (replace with actual API call)
       await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // Success message
       toast.success('Message sent successfully! 🎉');
-      
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        message: ''
-      });
-      
-    } catch (error) {
+      setFormData({ name: '', email: '', message: '' });
+    } catch {
       toast.error('Failed to send message. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  const iconClass = "w-12 h-12 bg-indigo-500/20 border border-indigo-500/30 rounded-lg flex items-center justify-center shrink-0";
+
   return (
-    <section id="contact" className="w-full px-4 md:px-8 py-12 md:py-20">
+    <section id="contact" className="w-full px-4 md:px-8 py-8 md:py-14">
       <div className="max-w-4xl mx-auto">
-        
-        {/* Section Header */}
+
         <ScrollAnimation direction="up">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Get In <span className="text-indigo-600">Touch</span>
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-indigo-500/20 bg-indigo-500/5 text-indigo-400 text-xs font-mono mb-4">[ 04 ] contact</div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Get In <span className="text-indigo-400">Touch</span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-400 max-w-2xl mx-auto">
               Let's work together to bring your ideas to life
             </p>
           </div>
         </ScrollAnimation>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-          
-          {/* Contact Information */}
+
           <ScrollAnimation direction="left" delay={0.2}>
             <div className="space-y-6">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Let's Connect</h3>
-              
-              {/* Contact Items */}
+              <h3 className="text-2xl font-bold text-white mb-6">Let's Connect</h3>
+
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-indigo-600">
+                  <div className={iconClass}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-indigo-400">
                       <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                       <polyline points="22,6 12,13 2,6"></polyline>
                     </svg>
                   </div>
                   <div>
-                    <p className="text-gray-600 text-sm">Email</p>
-                    <p className="text-gray-900 font-medium">davidlesaomako@gmail.com</p>
+                    <p className="text-gray-500 text-sm">Email</p>
+                    <p className="text-gray-200 font-medium">davidlesaomako@gmail.com</p>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-indigo-600">
+                  <div className={iconClass}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-indigo-400">
                       <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                     </svg>
                   </div>
                   <div>
-                    <p className="text-gray-600 text-sm">Phone</p>
-                    <p className="text-gray-900 font-medium">+27 71 366 1842</p>
+                    <p className="text-gray-500 text-sm">Phone</p>
+                    <p className="text-gray-200 font-medium">+27 71 366 1842</p>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-indigo-600">
+                  <div className={iconClass}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-indigo-400">
                       <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                       <circle cx="12" cy="10" r="3"></circle>
                     </svg>
                   </div>
                   <div>
-                    <p className="text-gray-600 text-sm">Location</p>
-                    <p className="text-gray-900 font-medium">Johannesburg, South Africa</p>
+                    <p className="text-gray-500 text-sm">Location</p>
+                    <p className="text-gray-200 font-medium">Johannesburg, South Africa</p>
                   </div>
                 </div>
               </div>
 
-              {/* Social Links */}
               <div className="pt-4">
-                <p className="text-gray-600 text-sm mb-4">Follow me on</p>
-                <div className="flex gap-4">
-                  {[
-                    { name: "GitHub", url: "https://github.com/skynet-hub", icon: "💻" },
-                    { name: "LinkedIn", url: "https://linkedin.com/in/magobo-lesaomako", icon: "💼" },
-                  ].map((social, index) => (
-                    <motion.a
-                      key={index}
-                      href={social.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-12 h-12 bg-white border border-gray-200 rounded-lg flex items-center justify-center text-lg hover:bg-indigo-50 hover:border-indigo-200 transition-colors"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      {social.icon}
-                    </motion.a>
-                  ))}
+                <p className="text-gray-500 text-sm mb-4">Follow me on</p>
+                <div className="flex gap-3">
+                  <motion.a
+                    href="https://github.com/skynet-hub"
+                    target="_blank" rel="noopener noreferrer"
+                    aria-label="GitHub"
+                    className="w-10 h-10 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center text-gray-400 hover:text-indigo-400 hover:border-indigo-500/40 hover:bg-indigo-500/10 transition-all"
+                    whileHover={{ scale: 1.1, y: -2 }} whileTap={{ scale: 0.95 }}
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
+                      <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                    </svg>
+                  </motion.a>
+                  <motion.a
+                    href="https://linkedin.com/in/magobo-lesaomako"
+                    target="_blank" rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    className="w-10 h-10 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center text-gray-400 hover:text-indigo-400 hover:border-indigo-500/40 hover:bg-indigo-500/10 transition-all"
+                    whileHover={{ scale: 1.1, y: -2 }} whileTap={{ scale: 0.95 }}
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                  </motion.a>
                 </div>
               </div>
             </div>
           </ScrollAnimation>
 
-          {/* Contact Form */}
           <ScrollAnimation direction="right" delay={0.3}>
-            <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                    Your Name
-                  </label>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">Your Name</label>
                   <input
-                    type="text"
-                    id="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
+                    type="text" id="name" value={formData.name} onChange={handleChange}
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 text-white rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors placeholder:text-gray-600"
                     placeholder="Enter your name"
                   />
                 </div>
-
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                    Email Address
-                  </label>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
                   <input
-                    type="email"
-                    id="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
+                    type="email" id="email" value={formData.email} onChange={handleChange}
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 text-white rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors placeholder:text-gray-600"
                     placeholder="Enter your email"
                   />
                 </div>
-
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    Your Message
-                  </label>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">Your Message</label>
                   <textarea
-                    id="message"
-                    rows="4"
-                    value={formData.message}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
+                    id="message" rows="4" value={formData.message} onChange={handleChange}
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 text-white rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors placeholder:text-gray-600"
                     placeholder="Tell me about your project..."
                   ></textarea>
                 </div>
-
                 <motion.button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-indigo-600 text-white py-3 px-6 rounded-lg font-bold hover:bg-indigo-700 disabled:bg-indigo-400 disabled:cursor-not-allowed transition-colors shadow-lg hover:shadow-xl"
+                  type="submit" disabled={isSubmitting}
+                  className="w-full bg-indigo-600 text-white py-3 px-6 rounded-lg font-bold hover:bg-indigo-500 disabled:bg-indigo-800 disabled:cursor-not-allowed transition-colors shadow-lg shadow-indigo-500/20"
                   whileHover={!isSubmitting ? { scale: 1.02 } : {}}
                   whileTap={!isSubmitting ? { scale: 0.98 } : {}}
                 >
