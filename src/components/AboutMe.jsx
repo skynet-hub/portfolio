@@ -46,6 +46,12 @@ const timeline = [
     active: false,
   },
   {
+    year: '2024',
+    title: 'WeThinkCode_',
+    place: 'Software Engineering Programme',
+    active: false,
+  },
+  {
     year: 'Ongoing',
     title: 'Self-Taught Engineering',
     place: '20+ projects · DevOps · Game Dev',
